@@ -1,50 +1,50 @@
 import React, { useState } from "react";
 
+
 const TeamForm = props => {
-    const [team, setTeam] = useState({
+    console.log(props);
+    const [member, setMember] = useState({
         name: "",
         email: "",
-        role: ""
+        role: "", 
     })
 
     const handleChanges = e => {
-        setTeam({...team, [e.target.name]: e.target.value})
-        console.log(team);
-    }
+        setMember({...member, [e.target.name]: e.target.value});
+    };
 
     const submitForm = e => {
         e.preventDefault();
-        props.addNewTeam(team);
-        setTeam({ name: "", email: "", role: "" });
+        props.addNewMember(member);
+        setMember({ name: "", email: "", role: "" });
+        console.log(e.target.value);
     }
 
     return(
         <form onSubmit={submitForm}>
-            <label htmlFor="name">Name</label>
+            <h2>Add New Member</h2>
+            <label htmlFor="name">Name:</label>
             <input
-                id="name"
                 type="text"
                 name="name"
                 onChange={handleChanges}
-                value={team.name}
+                value={member.name}
             />
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email:</label>
             <input
-                id="email"
                 type="text"
                 name="email"
                 onChange={handleChanges}
-                value={team.email}
+                value={member.email}
             />
-            <label htmlFor="role">Role</label>
+            <label htmlFor="role">Role:</label>
             <input
-                id="role"
                 type="text"
                 name="role"
                 onChange={handleChanges}
-                value={team.role}
+                value={member.role}
             />
-            <button type="submit">Add Member</button>
+            <button type="submit">Submit Member</button>
         </form>
     )
 }
